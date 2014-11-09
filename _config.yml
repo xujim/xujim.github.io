@@ -1,7 +1,7 @@
 # Site settings
 title: Jim's Technical Blog
 email: jim_xu@outlook.com
-description: > This is Jim's technical blog.
+description: This is Jim's technical blog.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "xujim.github.io"
 twitter_username: xujian1030
