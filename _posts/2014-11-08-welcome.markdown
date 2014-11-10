@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "Welcome!"
 date:   2014-11-08 12:36:25
 categories: Welcome
