@@ -5,7 +5,7 @@ date:   2010-10-08 09:36:25
 categories: GIS
 ---
 
-**转载请注明出处http://blog.csdn.net/xujim，谢谢）**
+**转载请注明出处http://xujim.github.io，谢谢）**
 
 到目前为止也已经参加过3、4个GIS项目的开发，涉及到国土资源利用、规划，电信管线资源管理的业务，系统架构有B/S，C/S的均是三层架构，系统平台自己所使用过的有SuperMap，ArcView，ArcGis，MapInfo，Geomedia，其他的多有了解，最擅长的和喜欢的还是ArcGIS。其实GIS平台都是大同小异，往往一通百通。
 
