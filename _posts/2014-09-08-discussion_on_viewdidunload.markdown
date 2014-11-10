@@ -58,6 +58,7 @@ UIViewController的这个升级让工程师们欢呼雀跃，在后续的代码�
 
 在ios5或之前，UIViewController会在didReceiveMemoryWarning时销毁views！然后结合代码，这里的UIViewController如果在被切换到background后收到内存告警会自动将views清理。但因为没有实现viewDidUnload而没有将views置为nil，从而导致野指针。而在下一个runloop的时候主线程在收到服务器端的response后会去访问这个view并且调用其上的方法，但view已经不存在，如此导致找不到selector，而crash。见以下代码摘要：
 
+{% highlight ruby %}
    -(void)tmLogicEngineSuccess:(TMLogicEngine *)engine request:(TMURLRequest *)request data:(TMResponse *)data
    {
        ……//代码省略
@@ -73,18 +74,21 @@ UIViewController的这个升级让工程师们欢呼雀跃，在后续的代码�
       
                ……//代码省略
    }
+ {% endhighlight %}
 
 在上面的代码中tmLogicEngineSuccess 是异步回调的，tipsViewAnimation会在下一个loop执行，其内部会访问_tipsView。如果在那时因为内存告警_tipsView被回收但没有在viewDidUnload中置nil，则会crash。
 
 为了验证这个猜测，我们可以通过伪造memory warning来重现这个crash。模拟memory warning，有两个方法，其一是在模拟器上有个permore memorywarning菜单，另一个是在程序里使用[[UIApplication sharedApplication] _performMemoryWarning]私有函数发送memory warning的消息。我们使用后者来做实验，在code中添加了如下响应方法：
 
+{% highlight ruby %}
    -(IBAction) performFakeMemoryWarning {        
    SEL memoryWarningSel = @selector(_performMemoryWarning);     
    if ([[UIApplication sharedApplication] respondsToSelector:memoryWarningSel])    {       
       [[UIApplication sharedApplication] performSelector:memoryWarningSel];     
    }else {       
       NSLog(@"Whoops UIApplication no loger responds to -_performMemoryWarning");     
-   }   
+   }
+ {% endhighlight %}
 
 实验的结果证实了之前的猜想——的确会导致crash。
 
