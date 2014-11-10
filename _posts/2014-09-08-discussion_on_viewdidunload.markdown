@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "viewDidUnload难说再见"
+title:  "viewDidUnload,难说再见"
 date:   2014-09-08 12:36:25
 categories: iOS
 ---
@@ -58,7 +58,7 @@ UIViewController的这个升级让工程师们欢呼雀跃，在后续的代码�
 
 在ios5或之前，UIViewController会在didReceiveMemoryWarning时销毁views！然后结合代码，这里的UIViewController如果在被切换到background后收到内存告警会自动将views清理。但因为没有实现viewDidUnload而没有将views置为nil，从而导致野指针。而在下一个runloop的时候主线程在收到服务器端的response后会去访问这个view并且调用其上的方法，但view已经不存在，如此导致找不到selector，而crash。见以下代码摘要：
 
-   - (void)tmLogicEngineSuccess:(TMLogicEngine *)engine request:(TMURLRequest *)request data:(TMResponse *)data
+   -(void)tmLogicEngineSuccess:(TMLogicEngine *)engine request:(TMURLRequest *)request data:(TMResponse *)data
    {
        ……//代码省略
                    //第一次页面请求返回
@@ -78,7 +78,7 @@ UIViewController的这个升级让工程师们欢呼雀跃，在后续的代码�
 
 为了验证这个猜测，我们可以通过伪造memory warning来重现这个crash。模拟memory warning，有两个方法，其一是在模拟器上有个permore memorywarning菜单，另一个是在程序里使用[[UIApplication sharedApplication] _performMemoryWarning]私有函数发送memory warning的消息。我们使用后者来做实验，在code中添加了如下响应方法：
 
-    -(IBAction) performFakeMemoryWarning {        
+   -(IBAction) performFakeMemoryWarning {        
    SEL memoryWarningSel = @selector(_performMemoryWarning);     
    if ([[UIApplication sharedApplication] respondsToSelector:memoryWarningSel])    {       
       [[UIApplication sharedApplication] performSelector:memoryWarningSel];     
@@ -89,7 +89,9 @@ UIViewController的这个升级让工程师们欢呼雀跃，在后续的代码�
 实验的结果证实了之前的猜想——的确会导致crash。
 
 review了目前公司ipad和iphone的代码，发现不添加viewDidUnload方法还是很普遍的。一般情况下，如果不会在异步线程，或者下一个main run loop中访问其中的view，那么风平浪静不会出现问题，但是我们经常使用mtop或者其他request从后来访问数据，在数据访问期间，用户可能切换view，之前发送请求的view切入到background，此时ios可能会回收这个view（5.0版本上），而后续当request有结果返回并且在下个runloop更新view时，却发现view的指针指向的内存已经gone，从而导致野指针访问而crash。
+
 避免这种bug的方式：不管什么viewController，如果需要兼容iOS5，请默默的添加上viewDidUnload函数，并做相应处理将views置为nil，但保持didReceiveMemoryWarning不变——因为这个函数在iOS6及以上不需要viewDidUnload。如此在iOS5下，系统会自动调用viewDidUnload，而在ios6下，则会忽略viewDidUnload，而只会调用didReceiveMemoryWarning，保证了兼容性。
+
 有意思的是，同事发现，即使是在iOS5下，viewDidUnload有时也不会被调用到。因为如果UIViewController如果不从xib或者storyboard中加载view（loadView），则会生成默认的空view，此时不需要调用loadView，从而后期的viewDidUnload也不会被调用到。详细请参考：
 http://blog.ztap.net/2013/08/uiviewcontroller-viewdidunload-not-called-when-received-memory-warning-on-ios-5/
 
