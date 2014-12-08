@@ -4,8 +4,6 @@ Facebook前段时间发布了其iOS UI框架AsyncDisplayKit（ASDK）的1.0正�
 
 然而本文主要着重于讨论AsyncDisplayKit的技术原理与其相对于于UIKit响应优化的技巧。
 
-我们知道，一般在提升iOS app响应和体验（包括绘图，UI等）主要在以下几个方面进行优化：
-
 众所周知，在现行的UI framework如UIKit，Windows的DotNet一旦涉及到绘制，总是建议在UI thread中进行，并且许多API也总是依赖于UI线程，否则容易导致crash。这和各framework开发者想使自己的Framework易于使用，不易出错，更好维护的初衷有关。
 但其实UI的展现涉及的几个主要步骤和UI线程并非一定要绑定在一起的。AsyncDisplayKit并没有使用特别高深的绘制或者如GPU优化等优化技巧，而是在UI展现过程中将几个重要阶段剥离主线程从而将UI的流畅性提高到极致。这几个重要阶段分别是布局、绘制、图像。下文将按这几个阶段阐述AsyncDisplayKit的技术技巧。
 
