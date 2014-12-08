@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "AsyncDisplayKit技术分析"
+date:   2014-12-07 12:36:25
+categories: iOS
+---
+
 ### 前言
 
 Facebook前段时间发布了其iOS UI框架AsyncDisplayKit（ASDK）的1.0正式版，这个框架被用于Facebook自家的应用Paper，能够提高UI的流畅性并缩短响应时间。AsyncDisplayKit附带了guide文档，有兴趣的同学可以参考[这里](https://github.com/facebook/AsyncDisplayKit)。
