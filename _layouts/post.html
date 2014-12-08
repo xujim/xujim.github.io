@@ -5,11 +5,11 @@ layout: default
 
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-meta"><a>{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</a></p>
+    <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
   </header>
 
   <article class="post-content">
-  <strong>转载请注明出处:http://{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }},谢谢</strong>
+  <strong>转载请注明出处:<a>http://{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}</a>,谢谢</strong>
   <br/>
   <br/>
     {{ content }}
