@@ -5,8 +5,6 @@ date:   2024-02-22 12:36:25
 categories: Flutter
 ---
 
-**转载请注明出处:http://xujim.github.io**
-
 ## 我发布的文章
 
 ### 1. [编程界的“二向箔”——Dart元编程](https://developer.aliyun.com/article/716170)
