@@ -33,6 +33,6 @@ FlutterBoost2.0的owner，离开闲鱼后就交给其他小伙伴维护了
 暂未开源，该框架能根据云端配置运行时动态hook任意oc函数，改写逻辑，发布到apple store也不受影响哦。基于汇编开发，能适配x86，ARM32，ARM64架构。
 ### 4. [跟AI学新概念英语](https://apps.apple.com/sg/app/%E8%B7%9Fai%E5%AD%A6%E6%96%B0%E6%A6%82%E5%BF%B5%E8%8B%B1%E8%AF%AD/id6497166760)
 基于Flutter开发的App，后端用python，已经上线；可以在[这里](https://apps.apple.com/sg/app/%E8%B7%9Fai%E5%AD%A6%E6%96%B0%E6%A6%82%E5%BF%B5%E8%8B%B1%E8%AF%AD/id6497166760)下载体验
-![跟AI学新概念英语](..\res\ai_book2.png =200x200) 
+<img src="..\res\ai_book2.png" width="200px" alt="跟AI学新概念英语">
 ### 5. 其他
 还有一些app正在打包上市场，期待一下吧
