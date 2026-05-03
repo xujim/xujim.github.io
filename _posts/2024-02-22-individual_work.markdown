@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "个人作品集"
-date:   2020-02-22 12:36:25
+date:   2026-04-22 12:36:25
 categories: Flutter
 ---
 ## 我的联系方式
@@ -28,11 +28,14 @@ xujian1030@163.com
 ### 1. [FlutterBoost混合框架](https://github.com/alibaba/flutter_boost)
 FlutterBoost2.0的owner，离开闲鱼后就交给其他小伙伴维护了
 ### 2. [苹果Mac时间追踪工具推荐：Time Master](https://zhuanlan.zhihu.com/p/503541873)
-工作中不知道自己的时间是被哪些软件消耗的，或者想统计一下一天中自己主要通过哪些软件工作，便开发了这款时间追踪工具。本来打算发布到Mac Store，嫌麻烦，未来会开源
+工作中不知道自己的时间是被哪些软件消耗的，或者想统计一下一天中自己主要通过哪些软件工作，便开发了这款时间追踪工具。已发布到[Mac Store](https://apps.apple.com/cn/app/timemastergo/id6504209677?l=en-GB&mt=12)，未来会开源
 ### 3. iOS动态hook框架
 暂未开源，该框架能根据云端配置运行时动态hook任意oc函数，改写逻辑，发布到apple store也不受影响哦。基于汇编开发，能适配x86，ARM32，ARM64架构。
 ### 4. [跟AI学新概念英语](https://apps.apple.com/sg/app/%E8%B7%9Fai%E5%AD%A6%E6%96%B0%E6%A6%82%E5%BF%B5%E8%8B%B1%E8%AF%AD/id6497166760)
 基于Flutter开发的App，后端用python，已经上线；可以在[这里](https://apps.apple.com/sg/app/%E8%B7%9Fai%E5%AD%A6%E6%96%B0%E6%A6%82%E5%BF%B5%E8%8B%B1%E8%AF%AD/id6497166760)下载体验
+![跟AI学新概念英语](..\res\ai_book2.png =200x200) 
 <img src="..\res\ai_book2.png" width="200px" alt="跟AI学新概念英语">
-### 5. 其他
+### 5. [精彩英语视界](https://apps.apple.com/cn/app/%E7%B2%BE%E5%BD%A9%E8%8B%B1%E8%AF%AD%E8%A7%86%E7%95%8C/id6761647133?l=en-GB)
+英语学习软件
+### 6. 其他
 还有一些app正在打包上市场，期待一下吧
